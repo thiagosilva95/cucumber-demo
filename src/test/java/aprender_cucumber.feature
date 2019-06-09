@@ -11,5 +11,5 @@ Cenário: Deve executar especificação
 	
 Cenário: Deve incrementar contador
 	Dado que valor do contador é 15
-	Quando eu incrementar em 5
+	Quando eu incrementar em 3
 	Então o valor do contador será 18

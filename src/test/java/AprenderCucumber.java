@@ -1,3 +1,5 @@
+import org.junit.Assert;
+
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
@@ -19,7 +21,7 @@ public class AprenderCucumber {
 		System.out.println("Então");
 	}
 	
-	private int contador = 0;
+	private Integer contador = 0;
 	@Dado("que valor do contador é {int}")
 	public void queValorDoContadorÉ(Integer valor) {
 		System.out.println(String.format("Valor: %s", valor));
@@ -35,11 +37,7 @@ public class AprenderCucumber {
 
 	@Então("o valor do contador será {int}")
 	public void oValorDoContadorSerá(Integer int2) {
-		if (int2.equals(contador)) {
-			System.out.println(String.format("True"));
-		} else {
-			System.out.println(String.format("False"));
-		}
+		Assert.assertEquals(int2, contador);
 	}
 
 }
