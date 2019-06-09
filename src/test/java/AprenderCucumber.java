@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 import org.junit.Assert;
 
 import cucumber.api.java.pt.Dado;
@@ -21,7 +23,7 @@ public class AprenderCucumber {
 		System.out.println("Então");
 	}
 	
-	private Integer contador = 0;
+	private Integer  contador = 0;
 	@Dado("que valor do contador é {int}")
 	public void queValorDoContadorÉ(Integer valor) {
 		System.out.println(String.format("Valor: %s", valor));
@@ -40,4 +42,21 @@ public class AprenderCucumber {
 		Assert.assertEquals(int2, contador);
 	}
 
+	LocalDate entrega;
+	@Dado("que a entrega é dia {int}\\/{int}\\/{int}")
+	public void queAEntregaÉDia(Integer dia, Integer mes, Integer ano) {
+	    entrega = LocalDate.of(ano, mes, dia);
+	}
+
+	@Quando("a entrega atrasar em {int} dias")
+	public void aEntregaAtrasarEmDias(Integer dia) {
+		entrega = entrega.plusDays(dia);
+	}
+
+	@Então("a entrega será efetuada em {int}\\/{int}\\/{int}")
+	public void aEntregaSeráEfetuadaEm(Integer dia, Integer mes, Integer ano) {
+		LocalDate entregaEsperada = LocalDate.of(ano, mes, dia);
+		
+		Assert.assertEquals(entregaEsperada, entrega);
+	}
 }
