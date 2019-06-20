@@ -26,16 +26,8 @@ Esquema do Cenário: Deve dar condições conforme tipo de aluguel
 	Então o preço do aluguel será R$ <valor>
 	E a data de entrega será em <qtdDias> dias
 	E a pontuação recebida será de <pontuacao> pontos
-	
+
+Exemplos:
 	| preco |    tipo   | valor | qtdDias | pontuacao |
 	|   4   | extendido |   8   |    3    |     2     |
 	|   4   |   comun   |   4   |    1    |     1     |
-	
-Cenário: Deve alugar para categoria comun
-	Dado um filme com estoque de 2 unidades
-	E que o preço do aluguel seja R$ 4
-	E que o tipo do aluguel seja comun
-	Quando alugar
-	Então o preço do aluguel será R$ 4
-	E a data de entrega será em 1 dia
-	E a pontuação recebida será de 1 pontos 
