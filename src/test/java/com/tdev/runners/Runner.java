@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/**",
+		features = "src/test/resources/features/alugar_filme.feature",
 		glue = "com.tdev.steps",
 		plugin = "pretty",
 		monochrome = true,
