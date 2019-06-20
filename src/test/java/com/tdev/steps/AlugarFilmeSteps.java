@@ -6,6 +6,7 @@ import org.junit.Assert;
 
 import com.tdev.entity.Filme;
 import com.tdev.entity.NotaAluguel;
+import com.tdev.entity.TipoAluguel;
 import com.tdev.service.AluguelService;
 
 import cucumber.api.java.pt.Dado;
@@ -18,7 +19,7 @@ public class AlugarFilmeSteps {
 	private AluguelService aluguelService = new AluguelService();
 	private NotaAluguel notaAluguel;
 	private String erro;
-	private String tipoAluguel;
+	private TipoAluguel tipoAluguel = TipoAluguel.COMUN;
 
 	@Dado("um filme com estoque de {int} unidades")
 	public void umFilmeComEstoqueDeUnidades(Integer estoque) {
@@ -56,8 +57,8 @@ public class AlugarFilmeSteps {
 	}
 	
 	@Dado("que o tipo do aluguel seja (.*)")
-	public void queOTipoDoAluguelSejaExtendido(String categoria) {
-		tipoAluguel = categoria;
+	public void queOTipoDoAluguelSejaExtendido(String tipo) {
+		tipoAluguel = tipo.equals("semanal") ? TipoAluguel.SEMANAL : tipo.equals("extendido") ? TipoAluguel.EXTENDIDO : TipoAluguel.COMUN;
 	}
 
 	@Então("a data de entrega será em (\\d+) dias?$")

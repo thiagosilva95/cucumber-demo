@@ -31,3 +31,4 @@ Exemplos:
 	| preco |    tipo   | valor | qtdDias | pontuacao |
 	|   4   | extendido |   8   |    3    |     2     |
 	|   4   |   comun   |   4   |    1    |     1     |
+	|   5   |  semanal  |   15  |    7    |     3     |
