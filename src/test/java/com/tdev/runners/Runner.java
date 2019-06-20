@@ -9,6 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/resources/features/alugar_filme.feature",
 		glue = "com.tdev.steps",
+		tags = {},
 		plugin = "pretty",
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,
