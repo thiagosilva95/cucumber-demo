@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import org.junit.Assert;
 
 import cucumber.api.java.pt.Dado;
-import cucumber.api.java.pt.Então;
+import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class AprenderCucumberSteps {
@@ -19,14 +19,14 @@ public class AprenderCucumberSteps {
 	    System.out.println("Quando");
 	}
 
-	@Então("a especificação deve finalizar com sucesso")
+	@Entao("a especificação deve finalizar com sucesso")
 	public void a_especifica_o_deve_finalizar_com_sucesso() {
 		System.out.println("Então");
 	}
 	
 	private Integer  contador = 0;
 	@Dado("que valor do contador é {int}")
-	public void queValorDoContadorÉ(Integer valor) {
+	public void queValorDoContadorE(Integer valor) {
 		System.out.println(String.format("Valor: %s", valor));
 	    contador = valor;
 	    
@@ -38,14 +38,14 @@ public class AprenderCucumberSteps {
 		contador += int1;
 	}
 
-	@Então("o valor do contador será {int}")
-	public void oValorDoContadorSerá(Integer int2) {
+	@Entao("o valor do contador será {int}")
+	public void oValorDoContadorSera(Integer int2) {
 		Assert.assertEquals(int2, contador);
 	}
 
 	LocalDate entrega;
 	@Dado("que a entrega é dia {int}\\/{int}\\/{int}")
-	public void queAEntregaÉDia(Integer dia, Integer mes, Integer ano) {
+	public void queAEntregaEDia(Integer dia, Integer mes, Integer ano) {
 	    entrega = LocalDate.of(ano, mes, dia);
 	}
 
@@ -54,8 +54,8 @@ public class AprenderCucumberSteps {
 		entrega = entrega.plusDays(dia);
 	}
 
-	@Então("a entrega será efetuada em {int}\\/{int}\\/{int}")
-	public void aEntregaSeráEfetuadaEm(Integer dia, Integer mes, Integer ano) {
+	@Entao("a entrega será efetuada em {int}\\/{int}\\/{int}")
+	public void aEntregaSeraEfetuadaEm(Integer dia, Integer mes, Integer ano) {
 		LocalDate entregaEsperada = LocalDate.of(ano, mes, dia);
 		
 		Assert.assertEquals(entregaEsperada, entrega);

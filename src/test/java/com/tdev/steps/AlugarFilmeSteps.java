@@ -11,7 +11,7 @@ import com.tdev.entity.TipoAluguel;
 import com.tdev.service.AluguelService;
 
 import cucumber.api.java.pt.Dado;
-import cucumber.api.java.pt.Então;
+import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import io.cucumber.datatable.DataTable;
 
@@ -30,7 +30,7 @@ public class AlugarFilmeSteps {
 	}
 
 	@Dado("que o preço do aluguel seja R$ {int}")
-	public void queOPreçoDoAluguelSejaR$(Integer aluguel) {
+	public void queOPrecoDoAluguelSeja(Integer aluguel) {
 	    filme.setAluguel(aluguel);
 	}
 
@@ -43,18 +43,18 @@ public class AlugarFilmeSteps {
 		}
 	}
 
-	@Então("o preço do aluguel será R$ {int}")
-	public void oPreçoDoAluguelSeráR$(Integer int1) {
+	@Entao("o preço do aluguel será R$ {int}")
+	public void oPrecoDoAluguelSera(Integer int1) {
 	    Assert.assertEquals(int1, notaAluguel.getPreco());
 	}
 
-	@Então("o estoque do filme será {int} unidade")
-	public void oEstoqueDoFilmeSeráUnidade(Integer int1) {
+	@Entao("o estoque do filme será {int} unidade")
+	public void oEstoqueDoFilmeSeraUnidade(Integer int1) {
 	    Assert.assertEquals(int1, filme.getEstoque());
 	}
 	
-	@Então("não será possível por falta de estoque")
-	public void nãoSeráPossívelPorFaltaDeEstoque() {
+	@Entao("não será possível por falta de estoque")
+	public void naoSeraPossivelPorFaltaDeEstoque() {
 		Assert.assertEquals("Filme sem estoque", erro);
 	}
 	
@@ -63,8 +63,8 @@ public class AlugarFilmeSteps {
 		tipoAluguel = tipo.equals("semanal") ? TipoAluguel.SEMANAL : tipo.equals("extendido") ? TipoAluguel.EXTENDIDO : TipoAluguel.COMUN;
 	}
 
-	@Então("a data de entrega será em (\\d+) dias?$")
-	public void aDataDeEntregaSeráEmDias(Integer int1) {
+	@Entao("a data de entrega será em (\\d+) dias?$")
+	public void aDataDeEntregaSeraEmDias(Integer int1) {
 		LocalDate dataEsperada = LocalDate.now().plusDays(int1);
 		
 		LocalDate dataEntrega = notaAluguel.getDataEntrega();
@@ -72,13 +72,16 @@ public class AlugarFilmeSteps {
 	    Assert.assertEquals(dataEsperada, dataEntrega);
 	}
 
-	@Então("a pontuação recebida será de {int} pontos")
-	public void aPontuaçãoRecebidaSeráDePontos(Integer pontuacao) {
+	@Entao("a pontuação recebida será de {int} pontos")
+	public void aPontuacaoRecebidaSeraDePontos(Integer pontuacao) {
 		Assert.assertEquals(pontuacao, notaAluguel.getPontuacao());
 	}
 	
 	@Dado("um filme")
 	public void umFilme(DataTable table) {
 	    Map<String, String> map = table.asMap(String.class, String.class);
+	    filme = new Filme();
+	    filme.setEstoque(Integer.parseInt(map.get("estoque")));
+	    filme.setAluguel(Integer.parseInt(map.get("preco")));
 	}
 }
