@@ -1,6 +1,7 @@
 package com.tdev.steps;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import org.junit.Assert;
 
@@ -12,6 +13,7 @@ import com.tdev.service.AluguelService;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
+import io.cucumber.datatable.DataTable;
 
 public class AlugarFilmeSteps {
 	
@@ -73,5 +75,10 @@ public class AlugarFilmeSteps {
 	@Então("a pontuação recebida será de {int} pontos")
 	public void aPontuaçãoRecebidaSeráDePontos(Integer pontuacao) {
 		Assert.assertEquals(pontuacao, notaAluguel.getPontuacao());
+	}
+	
+	@Dado("um filme")
+	public void umFilme(DataTable table) {
+	    Map<String, String> map = table.asMap(String.class, String.class);
 	}
 }
